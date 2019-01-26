@@ -41,6 +41,7 @@ public class MessageServer {
             // Bind and start to accept incoming connections.
             ChannelFuture f = b.bind(_port).sync(); // (7)
 
+            System.out.println("Server now running on port " + _port);
             // Wait until the server socket is closed.
             // In this example, this does not happen, but you can do that to gracefully
             // shut down your server.
@@ -56,7 +57,7 @@ public class MessageServer {
         if (args.length > 0) {
             port = Integer.parseInt(args[0]);
         }
-
+        System.out.println("Preparing server...");
         new MessageServer(port).run();
     }
 }
