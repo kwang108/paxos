@@ -47,7 +47,7 @@ public class MessageHandler extends SimpleChannelInboundHandler<HttpObject> {
 
                 FullHttpResponse response = new DefaultFullHttpResponse(HTTP_1_1, OK,
                         Unpooled.copiedBuffer(jsonResponse.toString(), CharsetUtil.UTF_8));
-
+                response.headers().set(HttpHeaderNames.CONTENT_TYPE, "text/json; charset=UTF-8");
                 channelHandlerContext.writeAndFlush(response).addListener(f -> {
                     if (!f.isSuccess()) {
                         System.out.println("Failed to send response to client");
@@ -69,6 +69,7 @@ public class MessageHandler extends SimpleChannelInboundHandler<HttpObject> {
                         jsonResponse.append("{\"err_msg\": \"Message not found\"}");
                         return new DefaultFullHttpResponse(HTTP_1_1, NOT_FOUND, Unpooled.copiedBuffer(jsonResponse.toString(), CharsetUtil.UTF_8));
                     });
+            response.headers().set(HttpHeaderNames.CONTENT_TYPE, "text/json; charset=UTF-8");
             channelHandlerContext.writeAndFlush(response).addListener(f -> {
                 if (!f.isSuccess()) {
                     System.out.println("Failed to send response to client");
