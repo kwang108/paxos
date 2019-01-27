@@ -2,6 +2,12 @@
 1. Assume running on Mac
 2. Install JDK 1.8 (Download from https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
+# Structure of repo
+All source code is in Java and is located under src/com/paxos. Problem 1 is in package com/paxos/messages, and the main
+logic in in MessageHandler.java. MessageServer.java contains code that sets up and starts up the http server.
+
+Problem 2 is in package com/paxos/gifts and there is only one class BuyGifts.java. 
+
 # How to Run Problem 1 from Commmand Line
 0. Make you have installed JDK 1.8 (latest version is fine)
 1. cd into folder "paxos".
